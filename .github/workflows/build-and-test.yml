@@ -1,0 +1,48 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive # Ensure submodules like SFML and vcpkg are pulled
+
+      # Set up CMake
+      - name: Set up CMake
+        uses: lukka/setup-cmake@v3
+        with:
+          cmake-version: latest
+
+      # Set up vcpkg
+      - name: Set up vcpkg
+        uses: lukka/run-vcpkg@v10
+        with:
+          vcpkg-commit-id: 'latest' # Optionally pin to a specific commit
+          vcpkg-json-path: ./vcpkg.json # Optional, if using a manifest file
+
+      # Configure the build
+      - name: Configure project with CMake
+        run: |
+          cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=lib/vcpkg/scripts/buildsystems/vcpkg.cmake
+          
+      # Build the project
+      - name: Build project
+        run: |
+          cmake --build build --config Debug
+          
+      # Run Unit Tests
+      - name: Run Unit Tests
+        run: |
+          ctest --test-dir build --output-on-failure
