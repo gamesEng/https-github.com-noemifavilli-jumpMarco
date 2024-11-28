@@ -1,0 +1,7 @@
+The license for this tool is CC0.
+
+You can do whatever you want with assets created in this tool.
+
+Credits are not required, but greatly appreciated.
+
+If you wish to give credit, you can use 'RgsDev' followed by a link pointing to this site or my page on itch.io https://rgsdev.itch.io.
