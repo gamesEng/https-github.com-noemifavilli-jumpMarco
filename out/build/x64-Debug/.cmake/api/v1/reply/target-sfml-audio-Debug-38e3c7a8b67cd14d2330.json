@@ -182,10 +182,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
-				},
-				{
-					"fragment" : "-std:c++14"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++14"
 				},
 				{
 					"fragment" : " /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 /wd4996 /wd4068 /wd4505 /wd4800"
@@ -217,26 +214,26 @@
 			[
 				{
 					"backtrace" : 20,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/include"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/include"
 				},
 				{
 					"backtrace" : 20,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/src"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/src"
 				},
 				{
 					"backtrace" : 21,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/minimp3"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/minimp3"
 				},
 				{
 					"backtrace" : 22,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/AL"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/AL"
 				},
 				{
 					"backtrace" : 5,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers"
 				}
 			],
 			"language" : "CXX",
@@ -306,26 +303,26 @@
 			[
 				{
 					"backtrace" : 20,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/include"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/include"
 				},
 				{
 					"backtrace" : 20,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/src"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/src"
 				},
 				{
 					"backtrace" : 21,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/minimp3"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/minimp3"
 				},
 				{
 					"backtrace" : 22,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/AL"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/AL"
 				},
 				{
 					"backtrace" : 5,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers"
 				}
 			],
 			"language" : "RC",
@@ -362,7 +359,7 @@
 		],
 		"prefix" : 
 		{
-			"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/out/install/x64-Debug"
+			"path" : "C:/Users/40624987/Source/Repos/jumpMarco/out/install/x64-Debug"
 		}
 	},
 	"link" : 
@@ -380,32 +377,32 @@
 			},
 			{
 				"backtrace" : 8,
-				"fragment" : "C:\\Users\\ddeva\\source\\repos\\https-github.com-noemifavilli-jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\openal32.lib",
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\openal32.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 11,
-				"fragment" : "C:\\Users\\ddeva\\source\\repos\\https-github.com-noemifavilli-jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\vorbisenc.lib",
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\vorbisenc.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 12,
-				"fragment" : "C:\\Users\\ddeva\\source\\repos\\https-github.com-noemifavilli-jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\vorbisfile.lib",
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\vorbisfile.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 13,
-				"fragment" : "C:\\Users\\ddeva\\source\\repos\\https-github.com-noemifavilli-jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\vorbis.lib",
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\vorbis.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 14,
-				"fragment" : "C:\\Users\\ddeva\\source\\repos\\https-github.com-noemifavilli-jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\ogg.lib",
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\ogg.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 17,
-				"fragment" : "C:\\Users\\ddeva\\source\\repos\\https-github.com-noemifavilli-jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\flac.lib",
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\flac.lib",
 				"role" : "libraries"
 			},
 			{

@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "bin/JUMP_MARCO.exe"
+			"path" : "bin/UnitTests.exe"
 		},
 		{
-			"path" : "bin/JUMP_MARCO.pdb"
+			"path" : "bin/UnitTests.pdb"
 		}
 	],
 	"backtrace" : 2,
@@ -16,15 +16,12 @@
 			"_add_executable",
 			"add_executable",
 			"link_directories",
-			"target_link_libraries",
-			"target_include_directories"
+			"target_link_libraries"
 		],
 		"files" : 
 		[
 			"lib/vcpkg/scripts/buildsystems/vcpkg.cmake",
-			"CMakeLists.txt",
-			"lib/sfml/src/SFML/Graphics/CMakeLists.txt",
-			"lib/sfml/src/SFML/Window/CMakeLists.txt"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -34,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 63,
+				"line" : 56,
 				"parent" : 0
 			},
 			{
@@ -52,31 +49,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 65,
-				"parent" : 0
-			},
-			{
-				"file" : 2
-			},
-			{
-				"command" : 3,
-				"file" : 2,
-				"line" : 93,
-				"parent" : 5
-			},
-			{
-				"file" : 3
-			},
-			{
-				"command" : 3,
-				"file" : 3,
-				"line" : 298,
-				"parent" : 7
-			},
-			{
-				"command" : 4,
-				"file" : 1,
-				"line" : 64,
+				"line" : 59,
 				"parent" : 0
 			}
 		]
@@ -87,17 +60,22 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
-				},
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++14"
+				}
+			],
+			"defines" : 
+			[
 				{
-					"fragment" : "-std:c++14"
+					"backtrace" : 4,
+					"define" : "GTEST_LINKED_AS_SHARED_LIBRARY=1"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 9,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/include"
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/vcpkg/installed/x64-windows/include"
 				}
 			],
 			"language" : "CXX",
@@ -105,7 +83,7 @@
 			{
 				"backtraces" : 
 				[
-					2
+					4
 				],
 				"standard" : "14"
 			},
@@ -115,22 +93,7 @@
 			]
 		}
 	],
-	"dependencies" : 
-	[
-		{
-			"backtrace" : 4,
-			"id" : "sfml-window::@344d4f502e197fb19f4c"
-		},
-		{
-			"backtrace" : 4,
-			"id" : "sfml-system::@ade90ebdf211b83bd87c"
-		},
-		{
-			"backtrace" : 4,
-			"id" : "sfml-graphics::@8f027e26a9c49a14a54c"
-		}
-	],
-	"id" : "JUMP_MARCO::@6890427a1f51a3e7e1df",
+	"id" : "UnitTests::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -145,22 +108,27 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "-LIBPATH:C:\\Users\\ddeva\\source\\repos\\https-github.com-noemifavilli-jumpMarco\\out\\build\\x64-Debug\\lib\\sfml\\lib",
+				"fragment" : "-LIBPATH:C:\\Users\\40624987\\source\\repos\\jumpMarco\\out\\build\\x64-Debug\\lib\\sfml\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 4,
-				"fragment" : "lib\\sfml\\lib\\sfml-graphics-d.lib",
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link\\gtest_main.lib",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 6,
-				"fragment" : "lib\\sfml\\lib\\sfml-window-d.lib",
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\vcpkg\\installed\\x64-windows\\debug\\lib\\gmock.lib",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 8,
-				"fragment" : "lib\\sfml\\lib\\sfml-system-d.lib",
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link\\gmock_main.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\vcpkg\\installed\\x64-windows\\debug\\lib\\gtest.lib",
 				"role" : "libraries"
 			},
 			{
@@ -170,8 +138,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "JUMP_MARCO",
-	"nameOnDisk" : "JUMP_MARCO.exe",
+	"name" : "UnitTests",
+	"nameOnDisk" : "UnitTests.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -192,7 +160,7 @@
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
-			"path" : "jump_marco/main.cpp",
+			"path" : "test/main_test.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

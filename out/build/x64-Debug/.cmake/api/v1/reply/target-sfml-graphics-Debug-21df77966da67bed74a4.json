@@ -2,13 +2,13 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "bin/sfml-window-d-2.dll"
+			"path" : "bin/sfml-graphics-d-2.dll"
 		},
 		{
-			"path" : "lib/sfml/lib/sfml-window-d.lib"
+			"path" : "lib/sfml/lib/sfml-graphics-d.lib"
 		},
 		{
-			"path" : "lib/sfml/lib/sfml-window-d.pdb"
+			"path" : "lib/sfml/lib/sfml-graphics-d.pdb"
 		}
 	],
 	"backtrace" : 3,
@@ -23,6 +23,7 @@
 			"target_link_libraries",
 			"sfml_add_external",
 			"sfml_find_package",
+			"target_compile_definitions",
 			"add_definitions",
 			"target_include_directories",
 			"target_sources"
@@ -31,6 +32,7 @@
 		[
 			"lib/vcpkg/scripts/buildsystems/vcpkg.cmake",
 			"lib/sfml/cmake/Macros.cmake",
+			"lib/sfml/src/SFML/Graphics/CMakeLists.txt",
 			"lib/sfml/src/SFML/Window/CMakeLists.txt",
 			"lib/sfml/CMakeLists.txt"
 		],
@@ -42,7 +44,7 @@
 			{
 				"command" : 2,
 				"file" : 2,
-				"line" : 284,
+				"line" : 89,
 				"parent" : 0
 			},
 			{
@@ -66,68 +68,77 @@
 			{
 				"command" : 4,
 				"file" : 2,
-				"line" : 298,
-				"parent" : 0
-			},
-			{
-				"command" : 4,
-				"file" : 2,
-				"line" : 344,
-				"parent" : 0
-			},
-			{
-				"command" : 6,
-				"file" : 2,
-				"line" : 328,
-				"parent" : 0
-			},
-			{
-				"command" : 5,
-				"file" : 1,
-				"line" : 405,
-				"parent" : 7
-			},
-			{
-				"command" : 4,
-				"file" : 1,
-				"line" : 357,
-				"parent" : 8
-			},
-			{
-				"command" : 7,
-				"file" : 2,
-				"line" : 92,
+				"line" : 93,
 				"parent" : 0
 			},
 			{
 				"file" : 3
 			},
 			{
-				"command" : 7,
+				"command" : 4,
 				"file" : 3,
-				"line" : 212,
-				"parent" : 11
+				"line" : 298,
+				"parent" : 6
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 126,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 405,
+				"parent" : 8
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 357,
+				"parent" : 9
+			},
+			{
+				"command" : 7,
+				"file" : 2,
+				"line" : 130,
+				"parent" : 0
+			},
+			{
+				"file" : 4
 			},
 			{
 				"command" : 8,
+				"file" : 4,
+				"line" : 212,
+				"parent" : 12
+			},
+			{
+				"command" : 9,
 				"file" : 1,
 				"line" : 204,
 				"parent" : 1
 			},
 			{
-				"command" : 8,
+				"command" : 9,
 				"file" : 2,
-				"line" : 309,
-				"parent" : 0
-			},
-			{
-				"command" : 8,
-				"file" : 2,
-				"line" : 301,
+				"line" : 96,
 				"parent" : 0
 			},
 			{
 				"command" : 9,
+				"file" : 2,
+				"line" : 99,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 127,
+				"parent" : 0
+			},
+			{
+				"command" : 10,
 				"file" : 1,
 				"line" : 95,
 				"parent" : 1
@@ -140,10 +151,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
-				},
-				{
-					"fragment" : "-std:c++14"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++14"
 				},
 				{
 					"fragment" : " /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 /wd4996 /wd4068 /wd4505 /wd4800"
@@ -152,43 +160,45 @@
 			"defines" : 
 			[
 				{
-					"define" : "SFML_WINDOW_EXPORTS"
+					"define" : "SFML_GRAPHICS_EXPORTS"
 				},
 				{
-					"backtrace" : 10,
-					"define" : "UNICODE"
+					"backtrace" : 11,
+					"define" : "STBI_FAILURE_USERMSG"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 13,
 					"define" : "_CRT_SECURE_NO_DEPRECATE"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 13,
 					"define" : "_SCL_SECURE_NO_WARNINGS"
-				},
-				{
-					"backtrace" : 10,
-					"define" : "_UNICODE"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 13,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/include"
-				},
-				{
-					"backtrace" : 13,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/src"
+					"backtrace" : 14,
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/vulkan"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/src"
 				},
 				{
 					"backtrace" : 15,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/glad/include"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/stb_image"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/glad/include"
+				},
+				{
+					"backtrace" : 17,
+					"isSystem" : true,
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/freetype2"
 				}
 			],
 			"language" : "CXX",
@@ -202,32 +212,36 @@
 			},
 			"sourceIndexes" : 
 			[
-				1,
-				3,
+				0,
+				2,
 				5,
-				9,
+				7,
 				11,
+				14,
+				15,
 				17,
-				19,
 				22,
 				24,
 				26,
 				28,
 				30,
 				32,
-				35,
-				37,
-				39,
+				34,
+				36,
+				38,
+				40,
 				42,
-				46,
-				48,
+				45,
+				47,
 				49,
 				51,
-				54,
+				53,
 				55,
-				56,
-				58,
-				60
+				57,
+				59,
+				61,
+				63,
+				65
 			]
 		},
 		{
@@ -240,49 +254,51 @@
 			"defines" : 
 			[
 				{
-					"define" : "SFML_WINDOW_EXPORTS"
+					"define" : "SFML_GRAPHICS_EXPORTS"
 				},
 				{
-					"backtrace" : 10,
-					"define" : "UNICODE"
+					"backtrace" : 11,
+					"define" : "STBI_FAILURE_USERMSG"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 13,
 					"define" : "_CRT_SECURE_NO_DEPRECATE"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 13,
 					"define" : "_SCL_SECURE_NO_WARNINGS"
-				},
-				{
-					"backtrace" : 10,
-					"define" : "_UNICODE"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 13,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/include"
-				},
-				{
-					"backtrace" : 13,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/src"
+					"backtrace" : 14,
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/include"
 				},
 				{
 					"backtrace" : 14,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/vulkan"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/src"
 				},
 				{
 					"backtrace" : 15,
 					"isSystem" : true,
-					"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/lib/sfml/extlibs/headers/glad/include"
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/stb_image"
+				},
+				{
+					"backtrace" : 16,
+					"isSystem" : true,
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/glad/include"
+				},
+				{
+					"backtrace" : 17,
+					"isSystem" : true,
+					"path" : "C:/Users/40624987/source/repos/jumpMarco/lib/sfml/extlibs/headers/freetype2"
 				}
 			],
 			"language" : "RC",
 			"sourceIndexes" : 
 			[
-				62
+				67
 			]
 		}
 	],
@@ -291,13 +307,17 @@
 		{
 			"backtrace" : 5,
 			"id" : "sfml-system::@ade90ebdf211b83bd87c"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "sfml-window::@344d4f502e197fb19f4c"
 		}
 	],
 	"folder" : 
 	{
 		"name" : "SFML"
 	},
-	"id" : "sfml-window::@344d4f502e197fb19f4c",
+	"id" : "sfml-graphics::@8f027e26a9c49a14a54c",
 	"install" : 
 	{
 		"destinations" : 
@@ -313,7 +333,7 @@
 		],
 		"prefix" : 
 		{
-			"path" : "C:/Users/ddeva/source/repos/https-github.com-noemifavilli-jumpMarco/out/install/x64-Debug"
+			"path" : "C:/Users/40624987/Source/Repos/jumpMarco/out/install/x64-Debug"
 		}
 	},
 	"link" : 
@@ -326,22 +346,17 @@
 			},
 			{
 				"backtrace" : 5,
+				"fragment" : "lib\\sfml\\lib\\sfml-window-d.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
 				"fragment" : "lib\\sfml\\lib\\sfml-system-d.lib",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 6,
-				"fragment" : "winmm.lib",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 6,
-				"fragment" : "gdi32.lib",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 9,
-				"fragment" : "opengl32.lib",
+				"backtrace" : 10,
+				"fragment" : "C:\\Users\\40624987\\source\\repos\\jumpMarco\\lib\\sfml\\extlibs\\libs-msvc-universal\\x64\\freetype.lib",
 				"role" : "libraries"
 			},
 			{
@@ -351,12 +366,12 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "sfml-window",
-	"nameOnDisk" : "sfml-window-d-2.dll",
+	"name" : "sfml-graphics",
+	"nameOnDisk" : "sfml-graphics-d-2.dll",
 	"paths" : 
 	{
-		"build" : "lib/sfml/src/SFML/Window",
-		"source" : "lib/sfml/src/SFML/Window"
+		"build" : "lib/sfml/src/SFML/Graphics",
+		"source" : "lib/sfml/src/SFML/Graphics"
 	},
 	"sourceGroups" : 
 	[
@@ -408,14 +423,14 @@
 				41,
 				42,
 				43,
-				44,
-				62
+				67
 			]
 		},
 		{
-			"name" : "windows",
+			"name" : "drawables",
 			"sourceIndexes" : 
 			[
+				44,
 				45,
 				46,
 				47,
@@ -431,8 +446,19 @@
 				57,
 				58,
 				59,
-				60,
-				61
+				60
+			]
+		},
+		{
+			"name" : "render texture",
+			"sourceIndexes" : 
+			[
+				61,
+				62,
+				63,
+				64,
+				65,
+				66
 			]
 		}
 	],
@@ -440,344 +466,373 @@
 	[
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Clipboard.hpp",
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/BlendMode.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/BlendMode.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Clipboard.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/Color.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/ClipboardImpl.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Color.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Context.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Context.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Export.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Cursor.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/Font.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Cursor.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/CursorImpl.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Export.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Font.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/GlContext.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/Glsl.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/GlContext.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Glsl.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/GlResource.cpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Glsl.inl",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/GlResource.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/ContextSettings.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Event.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/InputImpl.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Joystick.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Glyph.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Joystick.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/GLCheck.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/JoystickImpl.hpp",
+			"path" : "lib/sfml/src/SFML/Graphics/GLCheck.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/JoystickManager.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/JoystickManager.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Keyboard.hpp",
+			"path" : "lib/sfml/src/SFML/Graphics/GLExtensions.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Keyboard.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Mouse.hpp",
+			"path" : "lib/sfml/src/SFML/Graphics/GLExtensions.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Mouse.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/Image.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Touch.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Touch.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Sensor.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Image.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Sensor.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/ImageLoader.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/SensorImpl.hpp",
+			"path" : "lib/sfml/src/SFML/Graphics/ImageLoader.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/SensorManager.cpp",
+			"path" : "lib/sfml/include/SFML/Graphics/PrimitiveType.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/SensorManager.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Rect.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/VideoMode.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/VideoMode.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/VideoModeImpl.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Rect.inl",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Vulkan.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/RenderStates.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Vulkan.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Window.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/Window.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/RenderStates.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/WindowBase.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTexture.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/WindowBase.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/WindowHandle.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/RenderTexture.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/WindowImpl.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTarget.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/WindowImpl.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/RenderTarget.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/include/SFML/Window/WindowStyle.hpp",
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/RenderWindow.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/CursorImpl.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/RenderWindow.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/Shader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/Shader.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/Texture.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/Texture.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/TextureSaver.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/src/SFML/Graphics/TextureSaver.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/Transform.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/Transform.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/Transformable.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/Transformable.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/View.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/View.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/Vertex.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/Vertex.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/Drawable.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/CursorImpl.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/Shape.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/ClipboardImpl.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/ClipboardImpl.cpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Shape.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/InputImpl.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/CircleShape.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/InputImpl.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/JoystickImpl.cpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/JoystickImpl.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/SensorImpl.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/CircleShape.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/SensorImpl.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/RectangleShape.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/RectangleShape.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/VideoModeImpl.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/ConvexShape.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/ConvexShape.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/VulkanImplWin32.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/Sprite.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/VulkanImplWin32.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 3,
-			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/WindowImplWin32.cpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/WindowImplWin32.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Sprite.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "lib/sfml/src/SFML/Window/Win32/WglContext.cpp",
+			"path" : "lib/sfml/src/SFML/Graphics/Text.cpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
-			"path" : "lib/sfml/src/SFML/Window/Win32/WglContext.hpp",
+			"path" : "lib/sfml/include/SFML/Graphics/Text.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 16,
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/VertexArray.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/VertexArray.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/VertexBuffer.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/include/SFML/Graphics/VertexBuffer.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTextureImpl.cpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTextureImpl.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTextureImplFBO.cpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTextureImplFBO.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTextureImplDefault.cpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 3,
+			"path" : "lib/sfml/src/SFML/Graphics/RenderTextureImplDefault.hpp",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 18,
 			"compileGroupIndex" : 1,
-			"path" : "out/build/x64-Debug/lib/sfml/src/SFML/Window/sfml-window.rc",
+			"path" : "out/build/x64-Debug/lib/sfml/src/SFML/Graphics/sfml-graphics.rc",
 			"sourceGroupIndex" : 0
 		}
 	],

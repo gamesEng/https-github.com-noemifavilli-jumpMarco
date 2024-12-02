@@ -9,7 +9,7 @@
 		"files" : 
 		[
 			"lib/sfml/cmake/Macros.cmake",
-			"lib/sfml/src/SFML/Network/CMakeLists.txt"
+			"lib/sfml/src/SFML/Graphics/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -19,7 +19,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 48,
+				"line" : 89,
 				"parent" : 0
 			},
 			{
@@ -38,10 +38,10 @@
 			"destination" : "lib",
 			"paths" : 
 			[
-				"lib/sfml/lib/sfml-network-d.lib"
+				"lib/sfml/lib/sfml-graphics-d.lib"
 			],
-			"targetId" : "sfml-network::@cbc9a91aa7ffe1543f3e",
-			"targetIndex" : 5,
+			"targetId" : "sfml-graphics::@8f027e26a9c49a14a54c",
+			"targetIndex" : 4,
 			"targetIsImportLibrary" : true,
 			"type" : "target"
 		},
@@ -51,16 +51,16 @@
 			"destination" : "bin",
 			"paths" : 
 			[
-				"bin/sfml-network-d-2.dll"
+				"bin/sfml-graphics-d-2.dll"
 			],
-			"targetId" : "sfml-network::@cbc9a91aa7ffe1543f3e",
-			"targetIndex" : 5,
+			"targetId" : "sfml-graphics::@8f027e26a9c49a14a54c",
+			"targetIndex" : 4,
 			"type" : "target"
 		}
 	],
 	"paths" : 
 	{
-		"build" : "lib/sfml/src/SFML/Network",
-		"source" : "lib/sfml/src/SFML/Network"
+		"build" : "lib/sfml/src/SFML/Graphics",
+		"source" : "lib/sfml/src/SFML/Graphics"
 	}
 }

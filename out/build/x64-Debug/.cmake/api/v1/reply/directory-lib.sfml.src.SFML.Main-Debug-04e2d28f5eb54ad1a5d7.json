@@ -41,7 +41,7 @@
 				"lib/sfml/lib/sfml-main-d.lib"
 			],
 			"targetId" : "sfml-main::@900b937beac28bdf4572",
-			"targetIndex" : 4,
+			"targetIndex" : 5,
 			"type" : "target"
 		}
 	],
