@@ -26,6 +26,12 @@ add_subdirectory(lib/ecm)
 #### Maths ####
 add_subdirectory(lib/maths)
 
+#### Tile Level Loader ####
+add_subdirectory(lib/tile_level_loader)
+
+#### Engine ####
+add_subdirectory(lib/engine)
+
 
 # Opening Vcpkg win OR linux
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/lib/vcpkg/vcpkg")
@@ -68,4 +74,4 @@ add_test(NAME UnitTests COMMAND UnitTests)
 file(GLOB_RECURSE SOURCES jump_marco/*.cpp jump_marco/*.h)
 add_executable(JUMP_MARCO ${SOURCES})
 target_include_directories(JUMP_MARCO PRIVATE ${SFML_INCS})
-target_link_libraries(JUMP_MARCO sfml-graphics ecm maths)
+target_link_libraries(JUMP_MARCO sfml-graphics ecm maths engine tile_level_loader)
