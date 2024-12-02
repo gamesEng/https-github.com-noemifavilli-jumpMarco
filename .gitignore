@@ -471,3 +471,6 @@ lib/vcpkg/buildtrees/
 lib/vcpkg/downloads/
 lib/vcpkg/packages/
 lib/vcpkg/installed/
+
+out/build/
+
