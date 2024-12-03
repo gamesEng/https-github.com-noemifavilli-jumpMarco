@@ -30,9 +30,11 @@ set(SFML_INCS "lib/sfml/include")
 link_directories("${CMAKE_BINARY_DIR}/lib/sfml/lib")
 
 # B2D - Box2D phyics library
-add_subdirectory("lib/box2d/" EXCLUDE_FROM_ALL)
-set(B2D_INCS "lib/box2d/include")
-link_directories("${CMAKE_BINARY_DIR}/lib/box2d/lib")
+add_subdirectory("lib/b2d/Box2D")
+#include_directories("lib/b2d/Box2D/")
+set(B2D_INCS "lib/b2d/Box2D/")
+link_directories("${CMAKE_BINARY_DIR}/lib/sfml/lib")
+
 
 ### Own Libraries ###
 file(GLOB_RECURSE RESOURCE_FILES "res/*.*")
@@ -40,7 +42,7 @@ file(GLOB_RECURSE RESOURCE_FILES "res/*.*")
 file(GLOB_RECURSE SOURCE_FILES lib/engine/*.cpp lib/engine/*.h)
 add_library(engine STATIC ${SOURCE_FILES} ${RESOURCE_FILES})
 target_include_directories(engine INTERFACE "${CMAKE_SOURCE_DIR}/lib/engine/" PUBLIC SYSTEM ${B2D_INCS} )
-target_link_libraries(engine tile_level_loader maths ecm box2d sfml-graphics sfml-audio)
+target_link_libraries(engine tile_level_loader maths ecm Box2D sfml-graphics sfml-audio)
 
 ## Maths ####
 add_library(maths INTERFACE)

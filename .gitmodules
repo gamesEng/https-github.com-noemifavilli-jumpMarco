@@ -4,6 +4,6 @@
 [submodule "lib/vcpkg"]
 	path = lib/vcpkg
 	url = https://github.com/microsoft/vcpkg.git
-[submodule "lib/box2d"]
-	path = lib/box2d
-	url = https://github.com/erincatto/box2d.git
+[submodule "lib/b2d"]
+	path = lib/b2d
+	url = https://github.com/dooglz/Box2D.git
