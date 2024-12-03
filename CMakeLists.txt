@@ -1,10 +1,16 @@
-cmake_minimum_required(VERSION 3.11)
-
+cmake_minimum_required(VERSION 3.9)
+# Compiler flags
+if (MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /EHsc" CACHE INTERNAL "" FORCE)
+elseif(APPLE)
+  message("hello apple")
+  set(CMAKE_OSX_DEPLOYMENT_TARGET 10.9 CACHE STRING "")
+endif()
 # Set toolchain to use Vcpkg to get libs
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/lib/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
 message(STATUS "Using Vcpkg toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
 # Require modern C++
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(Games_Engineering)
@@ -41,7 +47,7 @@ file(GLOB_RECURSE RESOURCE_FILES "res/*.*")
 #### Engine ####
 file(GLOB_RECURSE SOURCE_FILES lib/engine/*.cpp lib/engine/*.h)
 add_library(engine STATIC ${SOURCE_FILES} ${RESOURCE_FILES})
-target_include_directories(engine INTERFACE "${CMAKE_SOURCE_DIR}/lib/engine/" PUBLIC SYSTEM ${B2D_INCS} )
+target_include_directories(engine INTERFACE "${CMAKE_SOURCE_DIR}/lib/engine" PUBLIC SYSTEM ${B2D_INCS} )
 target_link_libraries(engine tile_level_loader maths ecm Box2D sfml-graphics sfml-audio)
 
 ## Maths ####
@@ -52,7 +58,7 @@ target_include_directories(maths INTERFACE "${CMAKE_SOURCE_DIR}/lib/maths" INTER
 #### Tile Level Loader ####
 file(GLOB_RECURSE SOURCE_FILES lib/tile_level_loader/*.cpp lib/tile_level_loader/*.h)
 add_library(tile_level_loader STATIC ${SOURCE_FILES} ${RESOURCE_FILES})
-target_include_directories(tile_level_loader INTERFACE "${CMAKE_SOURCE_DIR}/lib/tile_level_loader/" )
+target_include_directories(tile_level_loader INTERFACE "${CMAKE_SOURCE_DIR}/lib/tile_level_loader" )
 target_link_libraries(tile_level_loader maths sfml-graphics)
 
 #### Entity Component Model ####
@@ -112,11 +118,11 @@ source_group("components" FILES ${CMPNTS})
 source_group("resources" FILES ${RESOURCE_FILES})
 
 #target_include_directories(JUMP_MARCO PUBLIC ${SFML_INCS})
-target_link_libraries(JUMP_MARCO engine)
+##target_link_libraries(JUMP_MARCO PUBLIC engine)
 set(EXECUTABLES ${EXECUTABLES} JUMP_MARCO)
 
 ### 
-add_dependencies(JUMP_MARCO copy_resources)
+##add_dependencies(JUMP_MARCO copy_resources)
 
 set_target_properties(JUMP_MARCO 
     PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY
@@ -145,7 +151,7 @@ foreach (exe ${EXECUTABLES})
   )
 
   target_link_libraries(${exe}
-    maths
+    engine maths Box2D ecm
     optimized sfml-audio debug sfml-audio-d
     optimized sfml-window debug sfml-window-d
     optimized sfml-system debug sfml-system-d
