@@ -133,6 +133,13 @@ set_target_properties(JUMP_MARCO
 
 #### Target for copying resources to build dir####
 if(APPLE)
+  
+  # Ensure `res` is bundled with Xcode builds
+  if(CMAKE_GENERATOR STREQUAL "Xcode")
+    set_target_properties(JUMP_MARCO PROPERTIES
+      XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "NO"  # Adjust as necessary
+    )
+  endif()
   add_custom_target(copy_resources ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${PROJECT_SOURCE_DIR}/res" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/res
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/lib/sfml/extlibs/libs-osx/Frameworks" ${CMAKE_BINARY_DIR}/lib/sfml/Frameworks
