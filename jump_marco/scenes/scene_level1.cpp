@@ -10,6 +10,8 @@
 
 using namespace std;
 using namespace sf;
+sf::Music backgroundMusic;
+sf::View view; // View for the camera
 
 static shared_ptr<Entity> player;
 
@@ -83,15 +85,34 @@ void Level1Scene::Load() {
 
   }
 
+
+  // Camera
+  // Set up the view to match the window size
+  view.setSize(Engine::GetWindow().getSize().x, Engine::GetWindow().getSize().y);
+  // Center the view on the player's initial position
+  view.setCenter(player->getPosition());
+
+
   // Add physics colliders to level tiles.
   {
+
+    auto wallTex = Resources::load<sf::Texture>("stonewall.png");
     auto walls = ls::findTiles(ls::WALL);
+
     for (auto w : walls) {
       auto pos = ls::getTilePosition(w);
       pos += Vector2f(20.f, 20.f); //offset to center
       auto e = makeEntity();
       e->setPosition(pos);
+
+      // Add PhysicsComponent
       e->addComponent<PhysicsComponent>(false, Vector2f(40.f, 40.f));
+
+      // Add SpriteComponent
+      auto spriteComp = e->addComponent<SpriteComponent>();
+      spriteComp->setTexure(wallTex); // Set wall texture
+      spriteComp->getSprite().setOrigin(20.f, 20.f); // Center sprite
+
     }
   }
 
@@ -99,11 +120,31 @@ void Level1Scene::Load() {
   std::this_thread::sleep_for(std::chrono::milliseconds(300));
   cout << " Scene 1 Load Done" << endl;
 
+  // Play background music
+  if (!backgroundMusic.openFromFile("res/sounds/Background_music.mp3")) {
+      cerr << "Failed to background music!" << endl;
+  }
+  else {
+      backgroundMusic.setLoop(true);
+      backgroundMusic.setVolume(20.f);
+      backgroundMusic.play();
+  }
+
   setLoaded(true);
 }
 
+
 void Level1Scene::UnLoad() {
   cout << "Scene 1 Unload" << endl;
+
+  // Reset the view to default
+  Engine::GetWindow().setView(Engine::GetWindow().getDefaultView());
+
+  // Stop the background music
+  if (backgroundMusic.getStatus() == sf::Music::Playing) {
+      backgroundMusic.stop();
+  }
+
   player.reset();
   ls::unload();
   Scene::UnLoad();
@@ -115,9 +156,52 @@ void Level1Scene::Update(const double& dt) {
     Engine::ChangeScene((Scene*)&level2);
   }
   Scene::Update(dt);
+
+  // Get the player's current position
+  sf::Vector2f playerPos = player->getPosition();
+
+  // Define the bounds based on map size and view size
+  // I tried clamping, didn't work
+  float halfWidth = view.getSize().x / 2.f;
+  float halfHeight = view.getSize().y / 2.f;
+  float leftBound = halfWidth;
+  float rightBound = ls::getWidth() * ls::getTileSize() - halfWidth;
+  float topBound = halfHeight;
+  float bottomBound = ls::getHeight() * ls::getTileSize() - halfHeight;
+
+  // Constrain the camera position within bounds
+  sf::Vector2f cameraPos = playerPos;
+
+  if (cameraPos.x < leftBound) {
+      cameraPos.x = leftBound;
+  }
+  else if (cameraPos.x > rightBound) {
+      cameraPos.x = rightBound;
+  }
+
+  if (cameraPos.y < topBound) {
+      cameraPos.y = topBound;
+  }
+  else if (cameraPos.y > bottomBound) {
+      cameraPos.y = bottomBound;
+  }
+
+  // Center the view on the constrained position
+  view.setCenter(cameraPos);
+
+  // Change the scene if the player reaches the end tile
+  if (ls::getTileAt(player->getPosition()) == ls::END) {
+      Engine::ChangeScene((Scene*)&level2);
+  }
+
 }
 
 void Level1Scene::Render() {
+
+  // Set the view for the current frame
+  Engine::GetWindow().setView(view);
+
   ls::render(Engine::GetWindow());
+
   Scene::Render();
 }

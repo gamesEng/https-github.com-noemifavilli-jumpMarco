@@ -3,10 +3,13 @@
 #include <tile_level_loader.h>
 #include <SFML/Window/Keyboard.hpp>
 #include "cmp_animation.h"
+#include <SFML/Audio.hpp>
 
 using namespace std;
 using namespace sf;
 using namespace Physics;
+
+
 
 bool PlayerPhysicsComponent::isGrounded() const {
   auto touch = getTouching();
@@ -76,6 +79,7 @@ void PlayerPhysicsComponent::update(double dt) {
       setVelocity(Vector2f(getVelocity().x, 0.f));
       teleport(Vector2f(pos.x, pos.y - 2.0f));
       impulse(Vector2f(0, -6.f));
+      _jumpSound.play();
       // Change to jump animation when initiating jump
       if (anim) { 
           anim->setAnimation("jump");
@@ -129,14 +133,22 @@ void PlayerPhysicsComponent::update(double dt) {
 }
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(Entity* p,
-                                               const Vector2f& size)
+    const Vector2f& size)
     : PhysicsComponent(p, true, size) {
-  _size = sv2_to_bv2(size, true);
-  _maxVelocity = Vector2f(200.f, 400.f);
-  _groundspeed = 30.f;
-  _grounded = false;
-  _body->SetSleepingAllowed(false);
-  _body->SetFixedRotation(true);
-  //Bullet items have higher-res collision detection
-  _body->SetBullet(true);
+    _size = sv2_to_bv2(size, true);
+    _maxVelocity = Vector2f(200.f, 400.f);
+    _groundspeed = 30.f;
+    _grounded = false;
+    _body->SetSleepingAllowed(false);
+    _body->SetFixedRotation(true);
+    //Bullet items have higher-res collision detection
+    _body->SetBullet(true);
+
+    // Load jump sound
+    if (!_jumpSoundBuffer.loadFromFile("res/sounds/Jump_sound.flac")) {
+        cerr << "Failed to load jump sound!" << endl;
+
+    }
+    _jumpSound.setBuffer(_jumpSoundBuffer);
+    _jumpSound.setVolume(30.f);
 }
