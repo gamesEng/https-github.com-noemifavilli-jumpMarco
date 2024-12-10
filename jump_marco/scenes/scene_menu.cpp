@@ -1,4 +1,3 @@
-//scene_menu.cpp
 #include "scene_menu.h"
 #include "../components/cmp_text.h"
 #include "../game.h"
@@ -33,7 +32,7 @@ void MenuScene::Load() {
     option3->get_components<TextComponent>()[0]->GetTextObject().setPosition(100.0f, yPosition + 100.0f);  // Offset by 100 units vertically
     menuOptions.push_back(option3);
 
-    
+
 
     setLoaded(true);
 }
@@ -91,7 +90,7 @@ void MenuScene::Update(const double& dt) {
         else if (currentSelection == 2) {
             Engine::Quit();  // Quit the game
         }
-        
+
     }
 
     Scene::Update(dt);
