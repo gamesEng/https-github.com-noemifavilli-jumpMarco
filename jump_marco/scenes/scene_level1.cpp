@@ -10,6 +10,7 @@
 
 using namespace std;
 using namespace sf;
+sf::Music backgroundMusic;
 
 static shared_ptr<Entity> player;
 
@@ -19,6 +20,7 @@ void Level1Scene::Load() {
 
   auto ho = Engine::getWindowSize().y - (ls::getHeight() * 40.f);
   ls::setOffset(Vector2f(0, ho));
+
 
   //// Create player
   {
@@ -99,11 +101,28 @@ void Level1Scene::Load() {
   std::this_thread::sleep_for(std::chrono::milliseconds(300));
   cout << " Scene 1 Load Done" << endl;
 
+  // Play background music
+  if (!backgroundMusic.openFromFile("res/sounds/Background_music.mp3")) {
+      cerr << "Failed to background music!" << endl;
+  }
+  else {
+      backgroundMusic.setLoop(true);
+      backgroundMusic.setVolume(20.f);
+      backgroundMusic.play();
+  }
+
   setLoaded(true);
 }
 
+
 void Level1Scene::UnLoad() {
   cout << "Scene 1 Unload" << endl;
+
+  // Stop the background music
+  if (backgroundMusic.getStatus() == sf::Music::Playing) {
+      backgroundMusic.stop();
+  }
+
   player.reset();
   ls::unload();
   Scene::UnLoad();
