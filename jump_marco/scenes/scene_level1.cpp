@@ -87,13 +87,25 @@ void Level1Scene::Load() {
 
   // Add physics colliders to level tiles.
   {
+
+    auto wallTex = Resources::load<sf::Texture>("stonewall.png");
     auto walls = ls::findTiles(ls::WALL);
+
     for (auto w : walls) {
       auto pos = ls::getTilePosition(w);
       pos += Vector2f(20.f, 20.f); //offset to center
       auto e = makeEntity();
       e->setPosition(pos);
+
+      // Add PhysicsComponent
       e->addComponent<PhysicsComponent>(false, Vector2f(40.f, 40.f));
+
+      // Add SpriteComponent
+      auto spriteComp = e->addComponent<SpriteComponent>();
+      spriteComp->setTexure(wallTex); // Set wall texture
+      spriteComp->getSprite().setOrigin(20.f, 20.f); // Center sprite
+
+
     }
   }
 
