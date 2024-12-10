@@ -17,3 +17,11 @@ void TextComponent::SetText(const std::string& str) {
   _string = str;
   _text.setString(_string);
 }
+
+const std::string& TextComponent::GetText() const {  // Implement GetText method
+    return _string;
+}
+
+sf::Text& TextComponent::GetTextObject() {  // Access the sf::Text object
+    return _text;
+}

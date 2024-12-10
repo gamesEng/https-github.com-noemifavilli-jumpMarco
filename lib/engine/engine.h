@@ -31,6 +31,7 @@ private:
 class Engine {
 public:
   Engine() = delete;
+  static void Quit();
   static void Start(unsigned int width, unsigned int height,
                     const std::string& gameName, Scene* scn);
   static void ChangeScene(Scene*);
