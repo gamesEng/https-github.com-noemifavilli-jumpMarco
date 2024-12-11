@@ -68,6 +68,38 @@ target_include_directories(ecm INTERFACE "${CMAKE_SOURCE_DIR}/lib/ecm" )
 target_link_libraries(ecm PRIVATE maths)
 
 
+###FILES
+file(GLOB_RECURSE SOURCES jump_marco/*.cpp jump_marco/*.h)
+# Components
+file(GLOB_RECURSE CMPNTS jump_marco/components/*.cpp jump_marco/components/*.h)
+file(GLOB_RECURSE ENTS jump_marco/entities/*.cpp jump_marco/entities/*.h)
+file(GLOB_RECURSE SCENES jump_marco/scenes/*.cpp jump_marco/scenes/*.h)
+
+##Gtest
+find_package(GTest CONFIG REQUIRED)
+add_executable(UnitTests 
+    test/main_test.cpp
+    test/entities/test_player_factory.cpp
+    jump_marco/game.h
+    jump_marco/main.cpp
+    ${CMPNTS}
+    ${ENTS}
+    ${SCENES}
+)
+target_link_libraries(UnitTests PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main 
+    engine maths Box2D ecm
+    optimized sfml-audio debug sfml-audio-d
+    optimized sfml-window debug sfml-window-d
+    optimized sfml-system debug sfml-system-d
+    optimized sfml-graphics debug sfml-graphics-d
+)
+target_include_directories(UnitTests PRIVATE 
+    ${CMAKE_SOURCE_DIR}/jump_marco     # Include jump_marco folder
+    ${CMAKE_SOURCE_DIR}/test           # Include test folder
+)
+enable_testing()
+add_test(NAME UnitTests COMMAND UnitTests)
+
 # Opening Vcpkg win OR linux
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/lib/vcpkg/vcpkg")
     message(STATUS "Bootstrapping vcpkg...")
@@ -94,24 +126,8 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/lib/vcpkg/vcpkg")
 
 endif()
 
-find_package(GTest CONFIG REQUIRED)
-enable_testing()
-
-add_executable(UnitTests test/main_test.cpp)
-
-# Use the vcpkg-installed GTest libraries
-target_link_libraries(UnitTests PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
-
-add_test(NAME UnitTests COMMAND UnitTests)
-
-
 #### Jump Marco ####
-###FILES
-file(GLOB_RECURSE SOURCES jump_marco/*.cpp jump_marco/*.h)
-# Components
-file(GLOB_RECURSE CMPNTS jump_marco/components/*.cpp jump_marco/components/*.h)
-file(GLOB_RECURSE ENTS jump_marco/entities/*.cpp jump_marco/entities/*.h)
-file(GLOB_RECURSE SCENES jump_marco/scenes/*.cpp jump_marco/scenes/*.h)
+
 
 add_executable(JUMP_MARCO ${SOURCES} ${RESOURCE_FILES})
 
