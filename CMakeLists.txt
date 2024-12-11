@@ -110,11 +110,14 @@ add_test(NAME UnitTests COMMAND UnitTests)
 file(GLOB_RECURSE SOURCES jump_marco/*.cpp jump_marco/*.h)
 # Components
 file(GLOB_RECURSE CMPNTS jump_marco/components/*.cpp jump_marco/components/*.h)
+file(GLOB_RECURSE ENTS jump_marco/entities/*.cpp jump_marco/entities/*.h)
 file(GLOB_RECURSE SCENES jump_marco/scenes/*.cpp jump_marco/scenes/*.h)
 
 add_executable(JUMP_MARCO ${SOURCES} ${RESOURCE_FILES})
 
 source_group("components" FILES ${CMPNTS})
+source_group("scenes" FILES ${SCENES})
+source_group("entities" FILES ${ENTS})
 source_group("resources" FILES ${RESOURCE_FILES})
 
 #target_include_directories(JUMP_MARCO PUBLIC ${SFML_INCS})

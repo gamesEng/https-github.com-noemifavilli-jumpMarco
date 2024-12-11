@@ -7,6 +7,9 @@
 #include <tile_level_loader.h>
 #include <iostream>
 #include <thread>
+#include "../components/cmp_enemy_ai.h"
+#include "../components/cmp_hurt_player.h"
+#include "../components/cmp_enemy_turret.h"
 
 using namespace std;
 using namespace sf;
@@ -25,6 +28,7 @@ void Level1Scene::Load() {
   //// Create player
   {
       player = makeEntity();
+      player->addTag("player"); //for the hurt to find us
       player->setPosition(ls::getTilePosition(ls::findTiles(ls::START)[0]));
 
 
@@ -84,6 +88,31 @@ void Level1Scene::Load() {
       player->addComponent<PlayerPhysicsComponent>(Vector2f(20.f, 30.f));
 
   }
+
+  {
+      auto enemyTiles = ls::findTiles(ls::ENEMY);
+      if (!enemyTiles.empty()) {
+          auto enemy = makeEntity();
+          enemy->setPosition(ls::getTilePosition(enemyTiles[0]) + Vector2f(0, 24));
+
+          // Add HurtPlayer Component
+          enemy->addComponent<HurtComponent>();
+
+          // Add AI Component
+          enemy->addComponent<EnemyAIComponent>();
+          enemy->addComponent<EnemyTurretComponent>();
+
+          // Add ShapeComponent
+          auto shapeComp = enemy->addComponent<ShapeComponent>();
+          shapeComp->setShape<sf::CircleShape>(16.f);
+          shapeComp->getShape().setFillColor(Color::Red);
+      }
+      else {
+          cerr << "Warning: No ENEMY tile found in the level." << endl;
+      }
+  }
+
+
 
 
   // Camera
