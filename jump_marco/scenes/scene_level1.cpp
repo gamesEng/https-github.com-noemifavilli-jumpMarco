@@ -10,6 +10,7 @@
 #include "../components/cmp_enemy_ai.h"
 #include "../components/cmp_hurt_player.h"
 #include "../components/cmp_enemy_turret.h"
+#include "../entities/player_factory.h"
 
 using namespace std;
 using namespace sf;
@@ -25,69 +26,10 @@ void Level1Scene::Load() {
   auto ho = Engine::getWindowSize().y - (ls::getHeight() * 40.f);
   ls::setOffset(Vector2f(0, ho));
 
-  //// Create player
-  {
-      player = makeEntity();
-      player->addTag("player"); //for the hurt to find us
-      player->setPosition(ls::getTilePosition(ls::findTiles(ls::START)[0]));
+  // Create Player at Start(s)
+  auto startPosition = ls::getTilePosition(ls::findTiles(ls::START)[0]);
+  player = PlayerFactory::create(*this, startPosition);
 
-
-      // Load player textures
-      auto idleTex = Resources::load<sf::Texture>("Marco/Idle.png");
-      auto runTex = Resources::load<sf::Texture>("Marco/Run.png");
-      auto jumpTex = Resources::load<sf::Texture>("Marco/Jump.png");
-
-      // Add SpriteComponent
-      auto spriteComp = player->addComponent<SpriteComponent>();
-      // Start with idle 
-      spriteComp->setTexure(idleTex);
-      //spriteComp->getSprite().setColor(sf::Color::White);
-      spriteComp->getSprite().setOrigin(75.f, 80.f);
-     
-      // Add AnimationComponent
-      auto animComp = player->addComponent<AnimationComponent>();
-
-      Animation idleAnim;
-
-      const int frameWidth = 150;
-      const int frameHeight = 150;
-      // 8 frame pic
-      for (int i = 0; i < 8; i++) {
-          idleAnim.frames.push_back(sf::IntRect(i * frameWidth, 0, frameWidth, frameHeight));
-      }
-
-      idleAnim.frameTime = 0.2f; // Half a second per frame
-      idleAnim.loop = true;
-
-      animComp->addAnimation("idle", idleAnim);
-
-      Animation runAnim;
-      for (int i = 0; i < 8; i++) {
-          runAnim.frames.push_back(sf::IntRect(i * frameWidth, 0, frameWidth, frameHeight));
-      }
-      runAnim.frameTime = 0.1f; // faster than idle
-      runAnim.loop = true;
-      //
-     
-      animComp->addAnimation("run", runAnim, runTex);
-
-      
-      // Jump - 2 frame pic
-      Animation jumpAnim;
-      for (int i = 0; i < 2; i++) {
-          jumpAnim.frames.push_back(sf::IntRect(i * frameWidth, 0, frameWidth, frameHeight));
-      }
-      jumpAnim.frameTime = 0.15f;
-      jumpAnim.loop = false;
-      animComp->addAnimation("jump", jumpAnim, jumpTex);
-
-
-      animComp->setAnimation("idle");
-
-      // Add player physics component
-      player->addComponent<PlayerPhysicsComponent>(Vector2f(20.f, 30.f));
-
-  }
 
   {
       auto enemyTiles = ls::findTiles(ls::ENEMY);
@@ -111,9 +53,6 @@ void Level1Scene::Load() {
           cerr << "Warning: No ENEMY tile found in the level." << endl;
       }
   }
-
-
-
 
   // Camera
   // Set up the view to match the window size
