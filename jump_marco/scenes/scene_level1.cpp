@@ -29,7 +29,7 @@ void Level1Scene::Load() {
   // Create Player at Start(s)
   auto startPosition = ls::getTilePosition(ls::findTiles(ls::START)[0]);
   player = PlayerFactory::create(*this, startPosition);
-
+ 
 
   {
       auto enemyTiles = ls::findTiles(ls::ENEMY);
@@ -85,7 +85,7 @@ void Level1Scene::Load() {
   }
 
   //Simulate long loading times
-  std::this_thread::sleep_for(std::chrono::milliseconds(300));
+  std::this_thread::sleep_for(std::chrono::milliseconds(3000));
   cout << " Scene 1 Load Done" << endl;
 
   // Play background music
@@ -159,7 +159,7 @@ void Level1Scene::Update(const double& dt) {
 
   // Change the scene if the player reaches the end tile
   if (ls::getTileAt(player->getPosition()) == ls::END) {
-      Engine::ChangeScene((Scene*)&level2);
+      Engine::ChangeScene((Scene*)&menu);
   }
 
 }
