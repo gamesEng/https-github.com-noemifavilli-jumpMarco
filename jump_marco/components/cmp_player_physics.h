@@ -1,5 +1,5 @@
 #pragma once
-
+#include <SFML/Audio.hpp>
 #include "cmp_physics.h"
 
 class PlayerPhysicsComponent : public PhysicsComponent {
@@ -8,6 +8,9 @@ protected:
   sf::Vector2f _maxVelocity;
   bool _grounded;
   float _groundspeed;
+
+  sf::SoundBuffer _jumpSoundBuffer;
+  sf::Sound _jumpSound;
 
   bool isGrounded() const;
 

@@ -10,6 +10,7 @@
 
 using namespace sf;
 using namespace std;
+
 Scene* Engine::_activeScene = nullptr;
 std::string Engine::_gameName;
 
@@ -87,6 +88,7 @@ void Engine::Start(unsigned int width, unsigned int height,
   Renderer::initialise(window);
   Physics::initialise();
   ChangeScene(scn);
+
   while (window.isOpen()) {
     Event event;
     while (window.pollEvent(event)) {
@@ -97,6 +99,11 @@ void Engine::Start(unsigned int width, unsigned int height,
     if (Keyboard::isKeyPressed(Keyboard::Escape)) {
       window.close();
     }
+
+    if (Keyboard::isKeyPressed(Keyboard::Q)) {
+        Engine::Quit(); // Quit the game when Q is pressed
+    }
+
 
     window.clear();
     Update();
@@ -110,6 +117,12 @@ void Engine::Start(unsigned int width, unsigned int height,
   window.close();
   Physics::shutdown();
   // Render::shutdown();
+}
+
+void Engine::Quit() {
+    if (_window != nullptr) {
+        _window->close();  // Closes the window, effectively quitting the game.
+    }
 }
 
 std::shared_ptr<Entity> Scene::makeEntity() {

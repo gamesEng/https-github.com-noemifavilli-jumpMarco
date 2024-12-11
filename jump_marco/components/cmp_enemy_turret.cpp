@@ -25,8 +25,8 @@ void EnemyTurretComponent::fire() const {
   bullet->addComponent<BulletComponent>();
   auto s = bullet->addComponent<ShapeComponent>();
 
-  s->setShape<sf::CircleShape>(8.f);
-  s->getShape().setFillColor(Color::Red);
+  s->setShape<sf::CircleShape>(3.f);
+  s->getShape().setFillColor(Color::Yellow);
   s->getShape().setOrigin(Vector2f(8.f, 8.f));
   auto p = bullet->addComponent<PhysicsComponent>(true, Vector2f(8.f, 8.f));
   p->setRestitution(.4f);

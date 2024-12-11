@@ -16,7 +16,7 @@ public:
   virtual void Update(const double& dt);
   virtual void Render();
   bool isLoaded() const;
-  std::shared_ptr<Entity> makeEntity();
+  virtual std::shared_ptr<Entity> makeEntity();
 
   EntityManager ents;
 
@@ -31,6 +31,7 @@ private:
 class Engine {
 public:
   Engine() = delete;
+  static void Quit();
   static void Start(unsigned int width, unsigned int height,
                     const std::string& gameName, Scene* scn);
   static void ChangeScene(Scene*);
