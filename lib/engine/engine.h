@@ -16,7 +16,7 @@ public:
   virtual void Update(const double& dt);
   virtual void Render();
   bool isLoaded() const;
-  std::shared_ptr<Entity> makeEntity();
+  virtual std::shared_ptr<Entity> makeEntity();
 
   EntityManager ents;
 
